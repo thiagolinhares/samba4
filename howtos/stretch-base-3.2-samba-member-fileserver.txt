@@ -332,7 +332,7 @@ SAMBA_NT_ADMIN_PASS="PutYourPassword_here"
 # ! keep the sleep lines, if its going to fast it errors..
 # we re-use the kerberos ticket.
 #
-if [ "$(net rpc rights list "${SAMBA_DC_ADMIN_GROUP_CHOICE}" -k -S $(hostname -f) | wc -l) -le 2 ]; then 
+if [ "$(net rpc rights list "${SAMBA_DC_ADMIN_GROUP_CHOICE}" -k -S $(hostname -f) | wc -l) -le 2" ]; then 
 net rpc rights grant "${SAMBA_DC_ADMIN_GROUP_CHOICE}" SeDiskOperatorPrivilege -k -S $(hostname -f)
 sleep 5
 net rpc rights grant "${SAMBA_DC_ADMIN_GROUP_CHOICE}" SeTakeOwnershipPrivilege -UAdministrator
